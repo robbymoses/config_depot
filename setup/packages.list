@@ -3,3 +3,5 @@ fzf
 gcc
 make
 stow
+jq
+ripgrep
