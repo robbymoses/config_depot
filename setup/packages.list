@@ -5,3 +5,4 @@ make
 stow
 jq
 ripgrep
+golang
