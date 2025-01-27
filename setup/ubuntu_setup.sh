@@ -41,5 +41,8 @@ else
 
 fi
 
+## Update GNU Stow SymLinks
+stow -d $HOME/config_depot -t $HOME/ .
+
 ## Update Github Remote for Config
 git remote set-url origin git@github.com:robbymoses/config_depot.git
