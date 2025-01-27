@@ -2,9 +2,9 @@
 curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz -o /tmp/nvim-linux64.tar.gz
 
 # Remove existing Neovim binary
-sudo rm -rf /opt/nvim
+sudo rm -rf /usr/local/bin/nvim-linux64
 
-# Extract to /opt folder
+# Extract to Local User folder
 sudo tar -C /usr/local/bin -xzf /tmp/nvim-linux64.tar.gz
 
 # Remove Downloaded tar
