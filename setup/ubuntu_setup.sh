@@ -6,8 +6,11 @@ PACKAGE_LIST=$HOME/config_depot/setup/packages.list
 # Custom Install Scripts
 CUSTOM_INSTALLERS=$HOME/config_depot/setup/custom_installers/*
 
+# Private Key
+PRIVATE_KEY=$HOME/.ssh/id_ed25519
+
 # Public SSH Key
-PUBLIC_KEY=$HOME/.ssh/id_ed25519.pub
+PUBLIC_KEY=$PRIVATE_KEY.pub
 
 ## Update && Upgrade
 sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt clean -y && sudo apt autoclean -y
@@ -28,13 +31,14 @@ sudo chsh -s /bin/zsh $USER
 stow -d ~/config_depot -t ~/
 
 ## Generate SSH Key
-if [ -f $PUBLIC_KEY ]; then
+if [ -f $PRIVATE_KEY ]; then
    echo "Found .ssh Key"
    cat $PUBLIC_KEY
 else
    echo "No Key Found... Generating."
+   ssh-keygen -t ed25519 -f "$PRIVATE_KEY" -C "rmoses@titaniumbytes.com" -N ""
    cat $PUBLIC_KEY
-   #ssh-keygen -t ed25519 -C "rmoses@titaniumbytes.com"
+
 fi
 
 ## Update Github Remote for Config
