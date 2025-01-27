@@ -1,7 +1,10 @@
 #!/bin/bash
 
 ## Packages File
-packages="~/config_depot/setup/packages.list"
+packages=~/config_depot/setup/packages.list
+
+# Custom Install Scripts
+custom_installers=~/config_depot/setup/custom_installers/*
 
 ## Update && Upgrade
 sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt clean -y && sudo apt autoclean -y
@@ -10,7 +13,7 @@ sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo
 sudo apt-get install -y $(grep -vE "^\s*#" $packages | tr "\n" "\t")
 
 ## Install Additional Scripts
-for file in ~/config_depot/setup/custom_installers/*
+for file in $custom_installers
 do
    sh $file
 done
